@@ -1,0 +1,19 @@
+{
+    "name": "geek-hub/domain-routing-bundle",
+    "type": "symfony-bundle",
+    "description": "This bundle include routing appropriately to domain specified in configuration",
+    "keywords": ["routing, domain"],
+    "homepage": "https://github.com/geekhub-php/DomainRoutingBundle",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4",
+        "symfony/framework-bundle": "~2.3"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-0": { "GeekHub\\DomainRoutingBundle": "" }
+    },
+    "target-dir": "GeekHub/DomainRoutingBundle"
+}
