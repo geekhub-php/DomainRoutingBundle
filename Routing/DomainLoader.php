@@ -45,11 +45,11 @@ class DomainLoader extends DelegatingLoader implements LoaderInterface
     {
         $domainSpecificRoutes = new RouteCollection();
 
-        if (!$request = $this->requestStack->getMasterRequest()) {
+        if ($request = $this->requestStack->getMasterRequest()) {
+            $domain = $request->getHttpHost();
+        } elseif (!$domain = $this->getDomain($_SERVER['argv'])) {
             return $domainSpecificRoutes;
         }
-
-        $domain = $request->getHttpHost();
 
         if (!array_key_exists($domain, $this->domainRoutingRelations)) {
             return $domainSpecificRoutes;
@@ -72,5 +72,18 @@ class DomainLoader extends DelegatingLoader implements LoaderInterface
     public function supports($resource, $type = null)
     {
         return 'domain_routing' === $type;
+    }
+
+    protected function getDomain(array $parameters)
+    {
+        foreach ($parameters as $parameter) {
+            if (0 === strpos($parameter, '--domain') || 0 === strpos($parameter, '-d')) {
+                if (false !== $pos = strpos($parameter, '=')) {
+                    return substr($parameter, $pos + 1);
+                }
+            }
+        }
+
+        return false;
     }
 }
