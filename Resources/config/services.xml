@@ -18,6 +18,10 @@
             <argument>%kernel.root_dir%</argument>
             <argument>%domain_routing.include_routes%</argument>
         </service>
+        <service id="domain_routing.event_listener.domain_listener"
+                 class="GeekHub\DomainRoutingBundle\EventListener\DomainListener">
+            <tag name="kernel.event_listener" event="console.command" method="onConsoleCommand" />
+        </service>
     </services>
 
 </container>
