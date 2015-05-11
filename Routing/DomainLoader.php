@@ -77,7 +77,7 @@ class DomainLoader extends DelegatingLoader implements LoaderInterface
     protected function getDomain(array $parameters)
     {
         foreach ($parameters as $parameter) {
-            if (0 === strpos($parameter, '--domain') || 0 === strpos($parameter, '-d')) {
+            if (0 === strpos($parameter, '--hostname')) {
                 if (false !== $pos = strpos($parameter, '=')) {
                     return substr($parameter, $pos + 1);
                 }

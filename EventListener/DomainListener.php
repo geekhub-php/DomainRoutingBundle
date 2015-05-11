@@ -13,7 +13,7 @@ class DomainListener
 
         // add the option to the application's input definition
         $inputDefinition->addOption(
-            new InputOption('domain', 'd', InputOption::VALUE_REQUIRED, 'Domain name for include routing', null)
+            new InputOption('hostname', null, InputOption::VALUE_REQUIRED, 'Domain name for include routing', null)
         );
     }
 }
